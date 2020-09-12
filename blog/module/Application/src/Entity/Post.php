@@ -11,8 +11,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Post 
 {
-    const STATUS_DRAFT       = 1; // Draft.
-    const STATUS_PUBLISHED   = 2; // Published.
+    const STATUS_DRAFT = 0;
+    const STATUS_PUBLISHED = 1;
 
     /**
      * @ORM\Id

@@ -54,7 +54,7 @@ $form->prepare();
 
 <p>
     <?= $this->escapeHtml($comment->getAuthor()) ?> on 
-    <?= $this->escapeHtml($comment->getDateCreated()); ?>
+    <?= $comment->getDateCreated()->format('d/m/Y H:i'); ?>
 </p>
 
 <p>

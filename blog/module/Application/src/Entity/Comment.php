@@ -18,26 +18,31 @@ class Comment
     protected $id;
 
     /** 
-     * @ORM\Column(name="content")  
+     * @ORM\Column(name="content")
      */
     protected $content;
 
     /** 
-     * @ORM\Column(name="author")  
+     * @ORM\Column(name="author", length=50)
      */
     protected $author;
     
     /** 
-     * @ORM\Column(name="date_created")  
+     * @ORM\Column(name="date_created", type="datetime")
      */
     protected $dateCreated;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Entity\Post", inversedBy="comments")
-     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id", nullable=false)
      */
     protected $post;
-    
+
+    public function __construct()
+    {
+        $this->dateCreated = new \DateTime();
+    }
+
     /**
      * Returns ID of this comment.
      * @return integer
@@ -98,6 +103,9 @@ class Comment
      */
     public function getDateCreated() 
     {
+        $this->dateCreated->setTimezone(
+            new \DateTimeZone('America/Sao_Paulo'));
+
         return $this->dateCreated;
     }
     
