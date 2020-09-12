@@ -9,6 +9,8 @@ This sample is based on the Hello World sample and it shows how to:
   * Create entities and define relationships between entities
   * Create repositories
 
+## TODOS OS COMANDOS ABAIXO PRESSUPÕE QUE VOCÊ ESTEJA DENTRO DA PASTA DO PROJETO
+
 ## Usando Docker
 
 Copie e altere os valores das variáveis de ambiente:
