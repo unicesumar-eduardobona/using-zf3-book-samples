@@ -20,7 +20,7 @@ return [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
                     'host'     => 'db',
-                    'user'     => 'root',
+                    'user'     => 'asdasd',
                     'password' => getenv('MYSQL_ROOT_PASSWORD'),
                     'dbname'   => getenv('MYSQL_DATABASE'),
                 ]
