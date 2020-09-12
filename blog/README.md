@@ -11,7 +11,13 @@ This sample is based on the Hello World sample and it shows how to:
 
 ## Usando Docker
 
-Entrar na pasta do projeto e executar o docker:
+Copie e altere os valores das variáveis de ambiente:
+
+```
+cp .env.dist .env
+```
+
+Agore entre na pasta do projeto e executar o docker:
 
 ```
 docker-compose up
@@ -42,6 +48,15 @@ Adjust permissions for `data` directory:
 chown -R www-data:www-data data
 chmod -R 775 data
 ```
+
+Confirme que o banco de dados está erguido e funcionando acessando a url abaixo:
+
+http://localhost:9001/?server=db&username=root&db=unicesumar
+
+Deverá acessar com o usuário e senha configurado em .env e mostrar o banco de dados Unicesumar.
+
+Isso quer dizer que a conexão com o banco e o adminer está OK, por isso, agora vamos focar na conexão
+com banco pela aplicação zend.
 
 Create `config/autoload/local.php` config file by copying its distrib version:
 
