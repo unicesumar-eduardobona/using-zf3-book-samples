@@ -19,12 +19,12 @@ return [
             'orm_default' => [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
-                    'host'     => '127.0.0.1',                    
-                    'user'     => 'blog',
-                    'password' => '<password>',
-                    'dbname'   => 'blog',
+                    'host'     => 'db',
+                    'user'     => 'root',
+                    'password' => getenv('MYSQL_ROOT_PASSWORD'),
+                    'dbname'   => getenv('MYSQL_DATABASE'),
                 ]
-            ],            
+            ],
         ],        
     ],
 ];
