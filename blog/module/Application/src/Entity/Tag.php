@@ -13,8 +13,8 @@ class Tag
 {
     /**
      * @ORM\Id
-     * @ORM\Column(name="id")
-     * @ORM\GeneratedValue
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
