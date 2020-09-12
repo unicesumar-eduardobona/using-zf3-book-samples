@@ -28,7 +28,7 @@ $this->pageBreadcrumbs()->setItems([
     </p>    
         
     <p class="comments-header">
-        <?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?> | 
+        <?= $post->getCommentCountStr(); ?> |
         <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$post->getId()],
                 ['fragment'=>'comment']); ?>">
             Add new comment

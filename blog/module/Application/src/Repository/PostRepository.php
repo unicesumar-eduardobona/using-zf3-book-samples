@@ -1,31 +1,32 @@
 <?php
 namespace Application\Repository;
 
-use Doctrine\ORM\EntityRepository;
 use Application\Entity\Post;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
+use Zend\Paginator\Paginator;
 
 /**
  * This is the custom repository class for Post entity.
  */
-class PostRepository extends EntityRepository
+class PostRepository extends RepositoryAbstract
 {
+
     /**
      * Retrieves all published posts in descending date order.
      * @return Query
      */
     public function findPublishedPosts()
     {
-        $entityManager = $this->getEntityManager();
-        
-        $queryBuilder = $entityManager->createQueryBuilder();
+        $queryBuilder = $this->getCreateQueryBuilder();
         
         $queryBuilder->select('p')
             ->from(Post::class, 'p')
-            ->where('p.status = ?1')
+            ->where('p.status = :status')
             ->orderBy('p.dateCreated', 'DESC')
-            ->setParameter('1', Post::STATUS_PUBLISHED);
-        
-        return $queryBuilder->getQuery();
+            ->setParameter(':status', Post::STATUS_PUBLISHED);
+
+        return $this->getPaginator($queryBuilder->getQuery());
     }
     
     /**
@@ -34,9 +35,7 @@ class PostRepository extends EntityRepository
      */
     public function findPostsHavingAnyTag()
     {
-        $entityManager = $this->getEntityManager();
-        
-        $queryBuilder = $entityManager->createQueryBuilder();
+        $queryBuilder = $this->getCreateQueryBuilder();
         
         $queryBuilder->select('p')
             ->from(Post::class, 'p')
@@ -44,7 +43,8 @@ class PostRepository extends EntityRepository
             ->where('p.status = ?1')
             ->orderBy('p.dateCreated', 'DESC')
             ->setParameter('1', Post::STATUS_PUBLISHED);
-        
+
+        $queryBuilder->getQuery()->getSQL();
         $posts = $queryBuilder->getQuery()->getResult();
         
         return $posts;
@@ -57,19 +57,18 @@ class PostRepository extends EntityRepository
      */
     public function findPostsByTag($tagName)
     {
-        $entityManager = $this->getEntityManager();
-        
-        $queryBuilder = $entityManager->createQueryBuilder();
-        
+        $queryBuilder = $this->getCreateQueryBuilder();
         $queryBuilder->select('p')
             ->from(Post::class, 'p')
             ->join('p.tags', 't')
-            ->where('p.status = ?1')
-            ->andWhere('t.name = ?2')
+            ->where('p.status = :status')
+            ->andWhere('t.name = :tagName')
             ->orderBy('p.dateCreated', 'DESC')
-            ->setParameter('1', Post::STATUS_PUBLISHED)
-            ->setParameter('2', $tagName);
-        
-        return $queryBuilder->getQuery();
+            ->setParameter(':status', Post::STATUS_PUBLISHED)
+            ->setParameter(':tagName', $tagName);
+
+
+        $results = $this->getPaginator($queryBuilder->getQuery());
+        return $results;
     }        
 }

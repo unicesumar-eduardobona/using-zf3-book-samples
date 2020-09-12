@@ -33,7 +33,7 @@ class Post
     protected $subtitle;
 
     /** 
-     * @ORM\Column(name="content")
+     * @ORM\Column(name="content", type="text")
      */
     protected $content;
 
@@ -59,7 +59,7 @@ class Post
      * @ORM\JoinTable(name="post_tag",
      *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
-     *      )
+     * )
      */
     protected $tags;
     
@@ -225,6 +225,18 @@ class Post
     public function removeTagAssociation($tag) 
     {
         $this->tags->removeElement($tag);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCommentCountStr()
+    {
+        $count = $this->getComments()->count();
+        if ($count == 0) {
+            return 'No comments';
+        }
+        return ($count == 1) ? '1 comment' : $count . ' comments';
     }
 }
 

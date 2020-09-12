@@ -1,52 +1,50 @@
 <?php
-$this->headTitle('View Post - ' . $post->getTitle());
 
+$this->headTitle('View Post - ' . $post->getTitle());
 $this->mainMenu()->setActiveItemId('home');
 
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home')
-            ]);
+    'Home' => $this->url('home'),
+    'Posts' => '/',
+    $post->getTitle() => null
+]);
         
 $form = $this->form;
 $form->get('author')->setAttributes([
     'class'=>'form-control', 
     'placeholder'=>'Author\'s name'
-    ]);
+]);
 $form->get('comment')->setAttributes([
     'class'=>'form-control',
     'rows'=>6, 
     'placeholder'=>'Text'
-    ]);
+]);
 $form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
-$form->prepare();        
-?>
+$form->prepare();
 
-<a href="
-    <?= $this->url('application', ['action'=>'index']); ?>">
-    &lt;&lt; Back to list of posts
-</a>
+$commentCountStr = $post->getCommentCountStr();
+?>
 
 <h1>
     <?= $this->escapeHtml($post->getTitle()); ?>    
 </h1>
 
+<p>
+    Published: <?=$post->getDateCreated()->format('jS \of F Y'); ?>
+    | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>
+</p>
 <p class="comments-header">
-    <?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?> | 
+    <?=$commentCountStr?> |
     <a href="#comment">
         Add new comment
     </a>
-</p>
-
-<p>
-    Published: <?=$post->getDateCreated()->format('jS \of F Y'); ?>
-    | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
 </p>
 
 <p>    
     <?= $this->escapeHtml($post->getContent()); ?>
 </p>
 
-<h3><?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?></h3>
+<h3><?=$commentCountStr?></h3>
 
 <?php foreach ($post->getComments() as $comment): ?>
 

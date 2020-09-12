@@ -130,20 +130,6 @@ class PostManager
         }
         
         return $tagsStr;
-    }    
-
-    /**
-     * Returns count of comments for given post as properly formatted string.
-     */
-    public function getCommentCountStr($post)
-    {
-        $commentCount = count($post->getComments());
-        if ($commentCount == 0)
-            return 'No comments';
-        else if ($commentCount == 1) 
-            return '1 comment';
-        else
-            return $commentCount . ' comments';
     }
 
 
@@ -157,7 +143,6 @@ class PostManager
         $comment->setPost($post);
         $comment->setAuthor($data['author']);
         $comment->setContent($data['comment']);        
-
 
         // Add the entity to entity manager.
         $this->entityManager->persist($comment);
@@ -180,7 +165,6 @@ class PostManager
         // Remove tag associations (if any)
         $tags = $post->getTags();
         foreach ($tags as $tag) {
-            
             $post->removeTagAssociation($tag);
         }
         
@@ -198,20 +182,26 @@ class PostManager
                 
         $posts = $this->entityManager->getRepository(Post::class)
                     ->findPostsHavingAnyTag();
+
         $totalPostCount = count($posts);
-        
+
+        /** @var \Doctrine\ORM\EntityRepository $repository */
+        $repository =   $tags = $this->entityManager->getRepository(Tag::class);
+
+        // @todo transformar este trecho em evento e persistir
+        // PRÓXIMA AULA
         $tags = $this->entityManager->getRepository(Tag::class)
                 ->findAll();
         foreach ($tags as $tag) {
-            
             $postsByTag = $this->entityManager->getRepository(Post::class)
-                    ->findPostsByTag($tag->getName())->getResult();
-            
-            $postCount = count($postsByTag);
+                    ->findPostsByTag($tag->getName());
+
+            $postCount = $postsByTag->count();
             if ($postCount > 0) {
                 $tagCloud[$tag->getName()] = $postCount;
             }
         }
+        //
         
         $normalizedTagCloud = [];
         

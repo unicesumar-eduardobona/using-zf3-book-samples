@@ -47,28 +47,22 @@ class IndexController extends AbstractActionController
         $tagFilter = $this->params()->fromQuery('tag', null);
         
         if ($tagFilter) {
-         
             // Filter posts by tag
-            $query = $this->entityManager->getRepository(Post::class)
-                    ->findPostsByTag($tagFilter);
-            
+            /** @var \Doctrine\ORM\Query $query */
+            $results = $this->entityManager->getRepository(Post::class)
+                ->findPostsByTag($tagFilter);
         } else {
             // Get recent posts
-            $query = $this->entityManager->getRepository(Post::class)
-                    ->findPublishedPosts();
+            $results = $this->entityManager->getRepository(Post::class)
+                ->findPublishedPosts();
         }
-        
-        $adapter = new DoctrineAdapter(new ORMPaginator($query, false));
-        $paginator = new Paginator($adapter);
-        $paginator->setDefaultItemCountPerPage(10);        
-        $paginator->setCurrentPageNumber($page);
                        
         // Get popular tags.
         $tagCloud = $this->postManager->getTagCloud();
         
         // Render the view template.
         return new ViewModel([
-            'posts' => $paginator,
+            'posts' => $results,
             'postManager' => $this->postManager,
             'tagCloud' => $tagCloud
         ]);
