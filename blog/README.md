@@ -11,7 +11,13 @@ This sample is based on the Hello World sample and it shows how to:
 
 ## Usando Docker
 
-Entrar na pasta do projeto e executar o docker:
+Copie e altere os valores das variáveis de ambiente:
+
+```
+cp .env.dist .env
+```
+
+Agore entre na pasta do projeto e executar o docker:
 
 ```
 docker-compose up
