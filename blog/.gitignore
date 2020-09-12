@@ -10,3 +10,5 @@ nbproject
 vendor/
 config/development.config.php
 phpunit.xml
+
+.env
