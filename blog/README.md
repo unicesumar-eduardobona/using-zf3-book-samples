@@ -14,7 +14,7 @@ This sample is based on the Hello World sample and it shows how to:
 Copie e altere os valores das variáveis de ambiente:
 
 ```
-cp .env.dist .env
+cp .env.DIST .env
 ```
 
 Agore entre na pasta do projeto e executar o docker:
