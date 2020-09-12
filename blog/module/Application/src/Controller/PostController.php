@@ -174,6 +174,7 @@ class PostController extends AbstractActionController
         } else {
             $data = [
                 'title' => $post->getTitle(),
+                'subtitle' => $post->getSubtitle(),
                 'content' => $post->getContent(),
                 'tags' => $this->postManager->convertTagsToString($post),
                 'status' => $post->getStatus()
@@ -186,7 +187,7 @@ class PostController extends AbstractActionController
         return new ViewModel([
             'form' => $form,
             'post' => $post
-        ]);  
+        ]);
     }
     
     /**

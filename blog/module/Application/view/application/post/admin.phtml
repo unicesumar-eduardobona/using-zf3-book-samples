@@ -36,7 +36,7 @@ $this->pageBreadcrumbs()->setItems([
                 <?= $this->escapeHtml($post->getTitle()); ?>
             </a> 
         </td>
-        <td><?= $this->escapeHtml($post->getDateCreated()); ?></td>        
+        <td><?= $post->getDateCreated()->format('d/m/Y H:i'); ?></td>
         <td><?= $this->escapeHtml($postManager->getPostStatusAsString($post)); ?></td>
         <td>
             <a class="btn btn-info" href="<?= $this->url('posts', 

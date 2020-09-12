@@ -35,10 +35,10 @@ class PostManager
         // Create new Post entity.
         $post = new Post();
         $post->setTitle($data['title']);
+        $post->setSubtitle($data['subtitle']);
         $post->setContent($data['content']);
         $post->setStatus($data['status']);
-        $currentDate = date('Y-m-d H:i:s');
-        $post->setDateCreated($currentDate);        
+        $post->setDateCreated(new \DateTime());
         
         // Add the entity to entity manager.
         $this->entityManager->persist($post);

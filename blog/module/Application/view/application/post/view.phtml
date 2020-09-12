@@ -38,7 +38,7 @@ $form->prepare();
 </p>
 
 <p>
-    Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?> 
+    Published: <?=$post->getDateCreated()->format('jS \of F Y'); ?>
     | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
 </p>
 

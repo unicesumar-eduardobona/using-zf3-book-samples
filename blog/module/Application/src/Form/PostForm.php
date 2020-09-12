@@ -44,6 +44,17 @@ class PostForm extends Form
                 'label' => 'Title',
             ],
         ]);
+
+        $this->add([
+            'type'  => 'text',
+            'name' => 'subtitle',
+            'attributes' => [
+                'id' => 'subtitle'
+            ],
+            'options' => [
+                'label' => 'SubTitle',
+            ],
+        ]);
         
         // Add "content" field
         $this->add([

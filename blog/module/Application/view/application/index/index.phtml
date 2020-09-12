@@ -23,7 +23,7 @@ $this->pageBreadcrumbs()->setItems([
     </h3>
     
     <p>
-        Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?> 
+        Published: <?=$post->getDateCreated()->format('d/m/Y H:i'); ?>
         | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
     </p>    
         

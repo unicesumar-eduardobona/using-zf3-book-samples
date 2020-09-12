@@ -11,7 +11,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Post 
 {
-    // Post status constants.
     const STATUS_DRAFT       = 1; // Draft.
     const STATUS_PUBLISHED   = 2; // Published.
 
@@ -23,22 +22,29 @@ class Post
     protected $id;
 
     /** 
-     * @ORM\Column(name="title")  
+     * @ORM\Column(name="title")
      */
     protected $title;
 
+    /**
+     * @ORM\Column(name="subtitle", type="string",
+     *     length=100, nullable=true)
+     */
+    protected $subtitle;
+
     /** 
-     * @ORM\Column(name="content")  
+     * @ORM\Column(name="content")
      */
     protected $content;
 
     /** 
-     * @ORM\Column(name="status")  
+     * @ORM\Column(name="status", type="boolean")
      */
     protected $status;
 
     /**
-     * @ORM\Column(name="date_created")  
+     * @var \DateTime
+     * @ORM\Column(name="date_created", type="datetime")
      */
     protected $dateCreated;
     
@@ -103,8 +109,26 @@ class Post
     }
 
     /**
+     * Returns title.
+     * @return string
+     */
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * Sets title.
+     * @param string $subTitle
+     */
+    public function setSubtitle($subtitle)
+    {
+        $this->subtitle = $subtitle;
+    }
+
+    /**
      * Returns status.
-     * @return integer
+     * @return bool
      */
     public function getStatus() 
     {
@@ -113,11 +137,11 @@ class Post
 
     /**
      * Sets status.
-     * @param integer $status
+     * @param bool $status
      */
     public function setStatus($status) 
     {
-        $this->status = $status;
+        $this->status = (bool) $status;
     }   
     
     /**
@@ -141,8 +165,11 @@ class Post
      * Returns the date when this post was created.
      * @return string
      */
-    public function getDateCreated() 
+    public function getDateCreated()
     {
+        $this->dateCreated->setTimezone(
+            new \DateTimeZone('America/Sao_Paulo'));
+
         return $this->dateCreated;
     }
     

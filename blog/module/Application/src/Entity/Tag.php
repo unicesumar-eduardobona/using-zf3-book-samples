@@ -19,7 +19,7 @@ class Tag
     protected $id;
 
     /** 
-     * @ORM\Column(name="name") 
+     * @ORM\Column(name="name", unique=true)
      */
     protected $name;
 
