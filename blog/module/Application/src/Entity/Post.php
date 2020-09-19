@@ -211,9 +211,9 @@ class Post extends EntityAbstract
     {
         $count = $this->getComments()->count();
         if ($count == 0) {
-            return 'No comments';
+            return 'Seja o primeiro a comentar';
         }
-        return ($count == 1) ? '1 comment' : $count . ' comments';
+        return ($count == 1) ? '1 comentário' : $count . ' comentários';
     }
 }
 

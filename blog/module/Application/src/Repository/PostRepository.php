@@ -63,7 +63,6 @@ class PostRepository extends RepositoryAbstract
             ->setParameter(':status', Post::STATUS_PUBLISHED)
             ->setParameter(':tagName', $tagName);
 
-
         $results = $this->getPaginator($queryBuilder->getQuery());
         return $results;
     }        

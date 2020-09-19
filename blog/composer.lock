@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a69ef0d21513d7ec8cb0dc89f641d861",
+    "content-hash": "85e7650be9e96c13b0725e57f303af6b",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -340,16 +340,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.10.3",
+            "version": "2.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "03ca23afc2ee062f5d3e32426ad37c34a4770dcf"
+                "reference": "47433196b6390d14409a33885ee42b6208160643"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/03ca23afc2ee062f5d3e32426ad37c34a4770dcf",
-                "reference": "03ca23afc2ee062f5d3e32426ad37c34a4770dcf",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/47433196b6390d14409a33885ee42b6208160643",
+                "reference": "47433196b6390d14409a33885ee42b6208160643",
                 "shasum": ""
             },
             "require": {
@@ -431,7 +431,7 @@
                 "sqlserver",
                 "sqlsrv"
             ],
-            "time": "2020-09-02T01:35:42+00:00"
+            "time": "2020-09-12T21:20:41+00:00"
         },
         {
             "name": "doctrine/doctrine-module",
@@ -1151,34 +1151,35 @@
         },
         {
             "name": "ocramius/package-versions",
-            "version": "1.4.2",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "44af6f3a2e2e04f2af46bcb302ad9600cba41c7d"
+                "reference": "1d32342b8c1eb27353c8887c366147b4c2da673c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/44af6f3a2e2e04f2af46bcb302ad9600cba41c7d",
-                "reference": "44af6f3a2e2e04f2af46bcb302ad9600cba41c7d",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/1d32342b8c1eb27353c8887c366147b4c2da673c",
+                "reference": "1d32342b8c1eb27353c8887c366147b4c2da673c",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0.0",
-                "php": "^7.1.0"
+                "php": "^7.3.0"
             },
             "require-dev": {
-                "composer/composer": "^1.6.3",
-                "doctrine/coding-standard": "^5.0.1",
+                "composer/composer": "^1.8.6",
+                "doctrine/coding-standard": "^6.0.0",
                 "ext-zip": "*",
-                "infection/infection": "^0.7.1",
-                "phpunit/phpunit": "^7.5.17"
+                "infection/infection": "^0.13.4",
+                "phpunit/phpunit": "^8.2.5",
+                "vimeo/psalm": "^3.4.9"
             },
             "type": "composer-plugin",
             "extra": {
                 "class": "PackageVersions\\Installer",
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -1197,7 +1198,7 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2019-11-15T16:17:10+00:00"
+            "time": "2019-07-17T15:49:50+00:00"
         },
         {
             "name": "psr/cache",
@@ -2142,59 +2143,6 @@
             ],
             "abandoned": "laminas/laminas-code",
             "time": "2019-12-10T19:21:15+00:00"
-        },
-        {
-            "name": "zendframework/zend-component-installer",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-component-installer.git",
-                "reference": "5e9beda3b81d29d4d080b110d67f8c8c44d93605"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-component-installer/zipball/5e9beda3b81d29d4d080b110d67f8c8c44d93605",
-                "reference": "5e9beda3b81d29d4d080b110d67f8c8c44d93605",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "php": "^5.6 || ^7.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.5.2",
-                "malukenho/docheader": "^0.1.6",
-                "mikey179/vfsstream": "^1.6.5",
-                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
-                "zendframework/zend-coding-standard": "~1.0.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev",
-                    "dev-develop": "1.2-dev"
-                },
-                "class": "Zend\\ComponentInstaller\\ComponentInstaller"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\ComponentInstaller\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Composer plugin for automating component registration in zend-mvc and Expressive applications",
-            "keywords": [
-                "ZendFramework",
-                "component installer",
-                "composer",
-                "plugin",
-                "zf"
-            ],
-            "abandoned": "laminas/laminas-component-installer",
-            "time": "2018-01-11T15:03:06+00:00"
         },
         {
             "name": "zendframework/zend-config",
@@ -3820,6 +3768,61 @@
             ],
             "abandoned": "laminas/laminas-view",
             "time": "2019-12-04T08:40:50+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "zendframework/zend-component-installer",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-component-installer.git",
+                "reference": "5e9beda3b81d29d4d080b110d67f8c8c44d93605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-component-installer/zipball/5e9beda3b81d29d4d080b110d67f8c8c44d93605",
+                "reference": "5e9beda3b81d29d4d080b110d67f8c8c44d93605",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.5.2",
+                "malukenho/docheader": "^0.1.6",
+                "mikey179/vfsstream": "^1.6.5",
+                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev",
+                    "dev-develop": "1.2-dev"
+                },
+                "class": "Zend\\ComponentInstaller\\ComponentInstaller"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\ComponentInstaller\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Composer plugin for automating component registration in zend-mvc and Expressive applications",
+            "keywords": [
+                "ZendFramework",
+                "component installer",
+                "composer",
+                "plugin",
+                "zf"
+            ],
+            "abandoned": "laminas/laminas-component-installer",
+            "time": "2018-01-11T15:03:06+00:00"
         },
         {
             "name": "zfcampus/zf-development-mode",
@@ -3872,7 +3875,6 @@
             "time": "2018-05-07T15:44:42+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
@@ -3881,7 +3883,10 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^5.6 || ^7.0"
+        "php": "^7.0"
     },
-    "platform-dev": []
+    "platform-dev": {
+        "php": "^7.3"
+    },
+    "plugin-api-version": "1.1.0"
 }
