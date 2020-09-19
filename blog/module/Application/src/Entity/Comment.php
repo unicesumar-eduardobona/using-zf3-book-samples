@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * This class represents a comment related to a blog post.
  * @ORM\Entity
  * @ORM\Table(name="comment")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Comment extends EntityAbstract
     implements DataCreatedAndUpdatedInterface
@@ -32,9 +33,18 @@ class Comment extends EntityAbstract
      */
     protected $post;
 
-    public function __construct()
+    /**
+     * @ORM\PrePersist
+     */
+    public function naoPermitirComentarioApos12Meses()
     {
-        $this->dateCreated = new \DateTime();
+        $post = $this->getPost();
+        $dateCreated = $post->getDateCreated();
+        $dateNow = new \DateTime();
+        $diff = $dateNow->diff($dateCreated);
+        if ($diff->y >= 1) {
+            throw new \Exception('Não é permitido comentário em posts com mais de 12 meses');
+        }
     }
 
     /**

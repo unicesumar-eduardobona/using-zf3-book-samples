@@ -3,7 +3,6 @@ namespace Application;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\Router\Http\Regex;
 use Zend\ServiceManager\Factory\InvokableFactory;
 use Application\Route\StaticRoute;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
@@ -40,8 +39,8 @@ return [
                         'id' => '[0-9]*'
                     ],
                     'defaults' => [
-                        'controller'    => Controller\PostController::class,
-                        'action'        => 'index',
+                        'controller' => Controller\PostController::class,
+                        'action' => 'index',
                     ],
                 ],
             ],
@@ -54,13 +53,25 @@ return [
                         'action'     => 'about',
                     ],
                 ],
-            ],                                    
+            ],
+            'test' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/test',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action' => 'about'
+                    ]
+                ]
+            ]
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
             Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
+            Controller\TestEntityController::class,
+            Controller\TestRepositoryController::class
         ],
     ],
     'service_manager' => [
@@ -81,8 +92,8 @@ return [
         ],
     ],
     'view_manager' => [
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
+        'display_not_found_reason' => false,
+        'display_exceptions'       => false,
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',

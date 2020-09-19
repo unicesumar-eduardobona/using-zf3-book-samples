@@ -3,9 +3,9 @@ $this->headTitle('Manage Posts');
 
 $this->mainMenu()->setActiveItemId('admin');
 
-$this->pageBreadcrumbs()->setItems([
-            'Admin'=>$this->url('home')
-            ]);
+$this->pageBreadcrumbs()->setItems(['Admin'=>$this->url('home')]);
+
+echo $this->flashMessenger()->render();
 ?>
 
 <h1>Manage Posts</h1>

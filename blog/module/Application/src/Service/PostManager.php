@@ -1,5 +1,6 @@
 <?php
 namespace Application\Service;
+use Zend\Mvc\Plugin\FlashMessenger\FlashMessenger;
 use Zend\ServiceManager\ServiceManager;
 use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Application\Entity\Post;
@@ -38,7 +39,6 @@ class PostManager
         $post->setSubtitle($data['subtitle']);
         $post->setContent($data['content']);
         $post->setStatus($data['status']);
-        $post->setDateCreated(new \DateTime());
         
         // Add the entity to entity manager.
         $this->entityManager->persist($post);

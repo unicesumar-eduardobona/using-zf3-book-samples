@@ -34,7 +34,6 @@ class Tag extends EntityAbstract
      */
     public function __construct() 
     {
-        $this->dateCreated = new \DateTime();
         $this->posts = new ArrayCollection();        
     }
 

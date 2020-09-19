@@ -2,6 +2,7 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\Plugin\FlashMessenger\FlashMessenger;
 use Zend\View\Model\ViewModel;
 use Application\Form\PostForm;
 use Application\Entity\Post;
@@ -59,6 +60,10 @@ class PostController extends AbstractActionController
                 
                 // Use post manager service to add new post to database.                
                 $this->postManager->addNewPost($data);
+
+                // @todo colocar flash messenger como exemplo de resposta
+//                $flash = new FlashMessenger();
+//                $flash->addErrorMessage('Ocorreu um Erro!');
                 
                 // Redirect the user to "index" page.
                 return $this->redirect()->toRoute('application');

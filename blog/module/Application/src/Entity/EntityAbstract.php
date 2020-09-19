@@ -2,6 +2,7 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \DateTime;
 
 abstract class EntityAbstract
 {
@@ -11,9 +12,25 @@ abstract class EntityAbstract
     protected $dateCreated;
 
     /**
+     * @ORM\PrePersist
+     */
+    public function setNowOnCreate()
+    {
+        $this->dateCreated = new DateTime();
+    }
+
+    /**
      * @ORM\Column(name="date_updated", type="datetime", nullable=true)
      */
     protected $dateUpdated;
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function setNowOnUpdate()
+    {
+        $this->dateUpdated = new DateTime();
+    }
 
     /**
      * Returns the date when this post was created.

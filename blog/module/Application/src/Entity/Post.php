@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * This class represents a single post in a blog.
  * @ORM\Entity(repositoryClass="\Application\Repository\PostRepository")
  * @ORM\Table(name="post")
+ * @ORM\HasLifecycleCallbacks
  */
 class Post extends EntityAbstract
     implements DataCreatedAndUpdatedInterface
@@ -66,7 +67,7 @@ class Post extends EntityAbstract
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
      */
     protected $category;
-    
+
     /**
      * Constructor.
      */
