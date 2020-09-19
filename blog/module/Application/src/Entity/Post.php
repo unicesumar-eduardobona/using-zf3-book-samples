@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity;
 
+use Application\Entity\Columns\Author;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -9,8 +10,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="\Application\Repository\PostRepository")
  * @ORM\Table(name="post")
  */
-class Post 
+class Post extends EntityAbstract
+    implements DataCreatedAndUpdatedInterface
 {
+    use Author;
+
     const STATUS_DRAFT = 0;
     const STATUS_PUBLISHED = 1;
 
@@ -41,12 +45,6 @@ class Post
      * @ORM\Column(name="status", type="boolean")
      */
     protected $status;
-
-    /**
-     * @var \DateTime
-     * @ORM\Column(name="date_created", type="datetime")
-     */
-    protected $dateCreated;
     
     /**
      * @ORM\OneToMany(targetEntity="\Application\Entity\Comment", mappedBy="post")
@@ -159,27 +157,6 @@ class Post
     public function setContent($content) 
     {
         $this->content = $content;
-    }
-    
-    /**
-     * Returns the date when this post was created.
-     * @return string
-     */
-    public function getDateCreated()
-    {
-        $this->dateCreated->setTimezone(
-            new \DateTimeZone('America/Sao_Paulo'));
-
-        return $this->dateCreated;
-    }
-    
-    /**
-     * Sets the date when this post was created.
-     * @param string $dateCreated
-     */
-    public function setDateCreated($dateCreated) 
-    {
-        $this->dateCreated = $dateCreated;
     }
     
     /**

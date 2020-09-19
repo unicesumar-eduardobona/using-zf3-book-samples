@@ -9,7 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="tag")
  */
-class Tag 
+class Tag extends EntityAbstract
+    implements DataCreatedAndUpdatedInterface
 {
     /**
      * @ORM\Id

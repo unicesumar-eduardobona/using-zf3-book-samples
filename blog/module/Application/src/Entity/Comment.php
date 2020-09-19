@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity;
 
+use Application\Entity\Columns\Author;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -8,8 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="comment")
  */
-class Comment 
+class Comment extends EntityAbstract
+    implements DataCreatedAndUpdatedInterface
 {
+    use Author;
+
     /**
      * @ORM\Id
      * @ORM\Column(name="id", type="integer")
@@ -21,16 +25,6 @@ class Comment
      * @ORM\Column(name="content")
      */
     protected $content;
-
-    /** 
-     * @ORM\Column(name="author", length=50)
-     */
-    protected $author;
-    
-    /** 
-     * @ORM\Column(name="date_created", type="datetime")
-     */
-    protected $dateCreated;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Entity\Post", inversedBy="comments")
@@ -78,46 +72,7 @@ class Comment
     {
         $this->content = $comment;
     }
-    
-    /**
-     * Returns author's name.
-     * @return string
-     */
-    public function getAuthor() 
-    {
-        return $this->author;
-    }
 
-    /**
-     * Sets author's name.
-     * @param string $author
-     */
-    public function setAuthor($author) 
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Returns the date when this post was created.
-     * @return string
-     */
-    public function getDateCreated() 
-    {
-        $this->dateCreated->setTimezone(
-            new \DateTimeZone('America/Sao_Paulo'));
-
-        return $this->dateCreated;
-    }
-    
-    /**
-     * Sets the date when this post was created.
-     * @param string $dateCreated
-     */
-    public function setDateCreated($dateCreated) 
-    {
-        $this->dateCreated = (string)$dateCreated;
-    }
-    
     /*
      * Returns associated post.
      * @return \Application\Entity\Post

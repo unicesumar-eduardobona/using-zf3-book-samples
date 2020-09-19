@@ -2,16 +2,12 @@
 namespace Application\Repository;
 
 use Application\Entity\Post;
-use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
-use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
-use Zend\Paginator\Paginator;
 
 /**
  * This is the custom repository class for Post entity.
  */
 class PostRepository extends RepositoryAbstract
 {
-
     /**
      * Retrieves all published posts in descending date order.
      * @return Query
