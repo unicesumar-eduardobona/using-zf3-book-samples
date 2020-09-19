@@ -4,7 +4,7 @@ namespace Application\Entity\Columns;
 trait Author
 {
     /**
-     * @ORM\Column(name="author", length=50)
+     * @ORM\Column(name="author", length=50, nullable=true)
      */
     protected $author;
 

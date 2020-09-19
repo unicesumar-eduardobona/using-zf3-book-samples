@@ -33,7 +33,7 @@ abstract class EntityAbstract
      */
     public function setDateCreated($dateCreated)
     {
-        $this->dateCreated = (string)$dateCreated;
+        $this->dateCreated = $dateCreated;
     }
 
     /**
@@ -54,6 +54,6 @@ abstract class EntityAbstract
      */
     public function setDateUpdated($dateUpdated)
     {
-        $this->dateUpdated = (string)$dateUpdated;
+        $this->dateUpdated = $dateUpdated;
     }
 }
