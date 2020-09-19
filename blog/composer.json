@@ -17,13 +17,14 @@
         "zendframework/zend-mvc-form": "^1.0",
         "zendframework/zend-mvc-plugins": "^1.0.1",
         "zendframework/zend-session": "^2.7.1",
-        "doctrine/doctrine-orm-module": "^2.0"
+        "doctrine/doctrine-orm-module": "^2.0",
+        "zendframework/zend-test": "3.1.0"
     },
     "require-dev": {
         "php": "^7.3",
         "zendframework/zend-component-installer": "^1.0 || ^0.3 || ^1.0.0-dev@dev",
         "zfcampus/zf-development-mode": "^3.0",
-        "symfony/var-dumper": "4.4.13"
+        "symfony/var-dumper": "^5.1"
     },
     "autoload": {
         "psr-4": {

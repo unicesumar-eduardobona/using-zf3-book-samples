@@ -1,15 +1,15 @@
 <?php
+namespace ApplicationTest\Entity;
 
-class PostTest
+use Application\Entity\Post;
+
+class PostTest extends EntityTestAbstract
 {
-    public function testFoiImplementadoInterfaceDatas()
-    {
+    protected $entityClass = Post::class;
 
-    }
-
-    public function testForamConfiguradasAsColunasObrigatorias()
+    public function testSeCategoriaExiste()
     {
-        $entity = new \Application\Entity\Post();
-        // assert
+        $reflection = $this->getReflection($this->entityClass);
+        $this->assertEquals('category', $reflection->getProperty('category')->getName());
     }
 }

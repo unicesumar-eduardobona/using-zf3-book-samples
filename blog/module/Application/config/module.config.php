@@ -69,9 +69,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
-            Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
-            Controller\TestEntityController::class,
-            Controller\TestRepositoryController::class
+            Controller\PostController::class => Controller\Factory\PostControllerFactory::class
         ],
     ],
     'service_manager' => [
