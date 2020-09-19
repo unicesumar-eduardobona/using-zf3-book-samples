@@ -60,6 +60,12 @@ class Post extends EntityAbstract
      * )
      */
     protected $tags;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Application\Entity\Category", inversedBy="posts")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
+     */
+    protected $category;
     
     /**
      * Constructor.

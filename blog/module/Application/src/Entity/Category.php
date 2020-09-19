@@ -23,6 +23,16 @@ class Category extends EntityAbstract
     protected $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Application\Entity\Post", mappedBy="category")
+     */
+    protected $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -52,5 +62,15 @@ class Category extends EntityAbstract
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    public function addPosts($post)
+    {
+        $this->posts[] = $post;
     }
 }

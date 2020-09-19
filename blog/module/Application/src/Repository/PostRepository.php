@@ -65,5 +65,5 @@ class PostRepository extends RepositoryAbstract
 
         $results = $this->getPaginator($queryBuilder->getQuery());
         return $results;
-    }        
+    }
 }

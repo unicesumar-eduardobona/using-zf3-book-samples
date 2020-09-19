@@ -1,11 +1,9 @@
 <?php
 namespace Application\Controller;
 
+use Application\Entity\Category;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
-use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
-use Zend\Paginator\Paginator;
 use Application\Entity\Post;
 
 /**
@@ -72,7 +70,22 @@ class IndexController extends AbstractActionController
      * This action displays the About page.
      */
     public function aboutAction() 
-    {   
+    {
+        $repo = $this->entityManager->getRepository(Category::class);
+        $query = $repo->findPostsByCategory(1); /** @var $query \Doctrine\ORM\Query */
+
+        $dqlEsperado = 'SELECT p FROM Application\Entity\Post p INNER JOIN p.category t WHERE p.status = :status AND t.id = :categoryId ORDER BY p.dateCreated DESC';
+        echo $dqlResultado = $query->getDQL();
+
+        var_dump($query->contains('INNER JOIN p.category'));
+        var_dump($query->contains('p.status = :status'));
+        exit;
+
+        // OK
+
+//        var_dump($results);
+        exit;
+
         $appName = 'Blog';
         $appDescription = 'A simple blog application for the Using Zend Framework 3 book';
         
